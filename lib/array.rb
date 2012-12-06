@@ -1,5 +1,5 @@
 class Array
-  def find_winner(limit = 3)
+  def find_first_siblings(limit = 3)
     acc = {}
     self.each do |value|
       if acc.empty?
