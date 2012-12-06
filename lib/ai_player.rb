@@ -1,2 +1,0 @@
-class AiPlayer < Player
-end
