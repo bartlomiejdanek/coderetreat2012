@@ -1,0 +1,2 @@
+class AiPlayer < Player
+end
