@@ -3,24 +3,23 @@ class Game
   attr_reader :players, :current_player
 
   def initialize
+    @size = 20
     @players = []
     @current_player = nil
 
     configure_game
     main_loop
-
   end
 
   def configure_game
-    @board = GameBoard.new
+    @board = GameBoard.new(@size)
+
     add_player("Stevo", "X")
     add_player("Niby komp", 'O')
-    #@board.add_player(AiPlayer.new("Komp"))
+    @current_player = @players.first
+
   end
 
-  def current_player
-    @current_player ||= players.shuffle.first
-  end
 
   def main_loop
     while board.valid?
@@ -29,13 +28,14 @@ class Game
       break if (@winner = board.check_winner)
       switch_player
     end
-    puts @winner.name
+    board.print
+    puts @players.find{|player| player.symbol == @winner}.name
   end
 
   private
 
   def switch_player
-    @current_player = (players - [current_player]).first
+    @current_player = @players.rotate!.first
   end
 
   def add_player(name, symbol)

@@ -36,5 +36,6 @@ PLATFORMS
 DEPENDENCIES
   guard
   guard-rspec
+  pry
   rb-fsevent (~> 0.9.1)
   rspec

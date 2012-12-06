@@ -1,7 +1,8 @@
 class GameBoard
 
-  def initialize
-    @matrix = Array2D.new(3)
+  def initialize(_size=3)
+    @size = _size
+    @matrix = Array2D.new(@size)
   end
 
   def valid?
@@ -22,17 +23,22 @@ class GameBoard
   end
 
   def check_winner
+    @matrix.all_slices.each do |slice|
+      if (symbol = slice.find_first_siblings(3))
+      return symbol
+        end
+    end
     false
   end
 
   private
 
   def print_row_separator
-    puts Array.new(3, ' -').join
+    puts Array.new(@size, ' -').join
   end
 
   def print_row(data)
-    puts "|#{data.map { |x| x ? x.symbol : ' ' }.join('|')}|"
+    puts "|#{data.map { |symbol| symbol || ' ' }.join('|')}|"
   end
 
 end

@@ -4,6 +4,6 @@ class Player < Struct.new(:name, :symbol, :board)
     coords = gets
     x, y = coords.split(',').map(&:to_i)
 
-    board.mark(x-1, y-1, self)
+    board.mark(x-1, y-1, self.symbol)
   end
 end
