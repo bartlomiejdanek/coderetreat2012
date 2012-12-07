@@ -3,6 +3,7 @@ require 'guard'
 require 'guard/ui'
 require 'guard/guard'
 require 'rspec'
+require File.join(File.dirname(__FILE__), '..', 'lib', 'coderetreat')
 
 ENV["GUARD_ENV"] = 'test'
 
